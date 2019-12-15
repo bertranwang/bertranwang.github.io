@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: "",
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="最大的安全漏洞并不是存在于什么程序或者服务器内，人类才是最大的安全漏洞">
+<meta name="keywords" content="教程,工具,安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈个人密码安全">
+<meta property="og:url" content="http://yoursite.com/2018/09/22/浅谈个人密码安全/index.html">
+<meta property="og:site_name" content="There We Were">
+<meta property="og:description" content="最大的安全漏洞并不是存在于什么程序或者服务器内，人类才是最大的安全漏洞">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-17T07:55:44.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈个人密码安全">
+<meta name="twitter:description" content="最大的安全漏洞并不是存在于什么程序或者服务器内，人类才是最大的安全漏洞">
+
+<link rel="canonical" href="http://yoursite.com/2018/09/22/浅谈个人密码安全/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>浅谈个人密码安全 | There We Were</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">There We Were</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">THE WORLD IS NEVER ENOUGH</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/22/浅谈个人密码安全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.loli.net/2019/07/27/5d3c1b54caa3052566.png">
+      <meta itemprop="name" content="Batran">
+      <meta itemprop="description" content="Less is more than more">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="There We Were">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈个人密码安全
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-22 11:43:22" itemprop="dateCreated datePublished" datetime="2018-09-22T11:43:22+08:00">2018-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-17 15:55:44" itemprop="dateModified" datetime="2019-11-17T15:55:44+08:00">2019-11-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂谈/" itemprop="url" rel="index">
+                    <span itemprop="name">杂谈</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>最大的安全漏洞并不是存在于什么程序或者服务器内，人类才是最大的安全漏洞</p>
+</blockquote>
+<a id="more"></a>
+
+<p>账户与密码，可能是我们生活中最不可或缺的一部分。虽然随着科技的不断发展，越来越多的公司开始朝着无密码化的方向发展，但当下，在没有找到比密码更加安全可靠的验证方式的情况下，学会保护我们的密码，仍然是一件非常重要的事情。</p>
+<h2 id="密码设置"><a href="#密码设置" class="headerlink" title="密码设置"></a>密码设置</h2><p>密码的设置，是看似简单，其实却非常麻烦的一件事。</p>
+<p>不同的账户，使用相同的密码不够安全，但全部设置成不同的密码，却又难以记忆。笔者身边的很多朋友不同账户都使用了相同的密码，就是因为太多的密码记忆起来太过麻烦，这种情况是非常危险的。</p>
+<p>也许有人会疑惑，现在已经有了非常多的密码管理软件。使用这些管理软件，不就可以解决密码难以记忆的问题了吗？其实不然。密码管理软件当然是密码安全中一个重要的帮手，但它只是锦上添花而不是雪中送炭。在移动端APP大行其道的今天，很多软件并不支持自动填充，还是需要我们自己记忆。尤其是在国内和安卓上，这种情况尤为明显。所以，使用一个好用好记且比较安全的方法设置密码，是非常重要的。</p>
+<p>笔者使用的方法，是拼音首字母法。</p>
+<p>首先选择一句你能记住的话，喜欢的名言警句或古诗词都可以。例如<code>People hate what they don&#39;t understand</code>这句话，首字母为<code>Phwtdu</code>。我们都知道，密码的长度越长，使用的符号越多，越安全。所以，接下来，随机选择几个数字和几个特殊符号插入其中的特殊位置。比如，选择<code>8567</code>四个数字和<code>+-</code>两个符号，并将首字母两个分为一组，组成的密码为<code>Ph85wt67du+-</code>,组成了密码的基础组成部分。当然，你可以随意增加数字和符号，或者首字母的长度，以及字符插入的位置。</p>
+<p><strong>你选择的那句话，请一定不要透漏给别人。</strong></p>
+<p>接下来，当每创建一个新的账户时，创建密码的可变部分。</p>
+<p>如果是微博，则可变部分可以为<code>weibo</code>或者<code>wb</code>；如果为腾讯系，则可以选择<code>tengxun</code>或者<code>tx</code>或者<code>qq</code>,<code>weixin</code>等。最后，按照你喜欢的顺序，将密码的可变部分与基础部分组装在一起，即可为不同的账户创建不同的密码。例如，按照上面的方式，微博的密码可以设置为<code>Ph85wt67du+-wb</code>；微信的密码可以设置为<code>Ph85wt67du+-wx</code>，不同的账户拥有不同的密码。</p>
+<h2 id="密码管理"><a href="#密码管理" class="headerlink" title="密码管理"></a>密码管理</h2><p>上文中也说过，密码管理软件是密码安全中锦上添花的部分。善用密码管理软件，能我们的密码更加安全。</p>
+<p>现在主要的密码管理类软件，笔者将其分为三类，下面是常用的软件：</p>
+<ul>
+<li>通用软件<ul>
+<li><code>LastPass</code></li>
+<li><code>1password</code></li>
+<li><code>Keepass</code></li>
+</ul>
+</li>
+<li>系统自带<ul>
+<li><code>Android</code></li>
+<li><code>ios/macos</code></li>
+</ul>
+</li>
+<li>浏览器<ul>
+<li><code>Chrome</code></li>
+<li><code>Firefox</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="通用软件"><a href="#通用软件" class="headerlink" title="通用软件"></a>通用软件</h3><p>通用软件的好处是跨平台，并且可以随时查阅。相比于浏览器，更加安全。</p>
+<p>上述三个软件中，<code>Lastpass</code>有免费和付费账户，免费版即可满足绝大多数用户需求。<code>1password</code>是付费软件，据称比<code>Lastpass</code>可能更加可靠，笔者并未使用过，因此不做过多阐释。<code>Keepass</code>是开源软件。</p>
+<p>推荐程度，<code>Keepass</code> &gt; <code>1password</code> &gt; <code>Lastpass</code>，理由如下：</p>
+<ul>
+<li><code>Keepass</code>为开源软件，可以清楚看到源代码，不会有后门的风险，甚至可以自己修改，使其更加符合自己的需求。</li>
+<li><code>Keepass</code>数据存储在本地，可以通过各种你喜欢的云服务实现云同步。其它两个软件存储在自己的服务器上。<code>1password</code>也可以存储到云服务。</li>
+<li><code>Keepass</code>有许多实现不同功能的插件，甚至有些支持下文所述的两步验证。</li>
+</ul>
+<p>三个密码管理软件的数据可以相互导入导出。</p>
+<h3 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h3><p><code>Android</code>和<code>ios/macos</code>都自带了钥匙串的功能，<code>ios/macos</code>可以互通。系统自带的好处在于不用安装第三方软件，但查阅修改、添加纪录比较麻烦，国内<code>Android</code>更是无法使用。</p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p><code>Chrome</code>和<code>Firefox</code>的密码管理软件大同小异，在浏览器中登录后，会记录用户名和密码，通过云同步在全平台客户端使用。移动端可以查阅复制。两者比较之下，<code>Chrome</code>的安全保护更加谨慎，用户查阅密码时需要输入系统账户密码。<code>Firefox</code>也可以设置<strong>主密码</strong>实现类似功能。</p>
+<p>浏览器端的限制在于，浏览器内非常好用，客户端密码的记录比较麻烦。</p>
+<p>其它浏览器的功能都不如这两家强大，所以不再阐述。</p>
+<h2 id="两步验证"><a href="#两步验证" class="headerlink" title="两步验证"></a>两步验证</h2><p>两步验证，即在输入密码后，用户需要再次输入软件提供的一组随机验证码，以确保账户安全。是一种已经被广泛应用的账户安全措施。</p>
+<p>在国内，使用最多的两步验证大概是短信验证和邮件验证，但很多软件其实还支持<code>OTP</code>算法生成的动态密码。比如我们熟知的QQ安全中心，不过它只能使用于QQ。</p>
+<p>和它不同，绝大多数软件使用了通用的生成算法，在开启两步验证时，提供了二维码并要求你扫描的软件，都使用了通用算法。现在，最广泛的通用软件是Google的<code>身份验证器</code>应用，但无法备份数据是它的一大缺陷。当你重新安装应用或换用新手机，验证码无法转移。</p>
+<p>如果你保存了当初的生成验证码，可以重新扫描；而如果你连密码都忘了，就需要重新启用两步验证，非常麻烦。</p>
+<p>这里推荐一款开源的通用两步验证应用：<code>andotp</code>，点击<a href="https://github.com/andOTP/andOTP" target="_blank" rel="noopener">这里</a>下载。它可以使用自己的密码备份所有两步验证的数据，换手机时，只需重新导入备份文件即可。</p>
+<h3 id="例外情况"><a href="#例外情况" class="headerlink" title="例外情况"></a>例外情况</h3><p>有时，手机未安装Google框架，不能扫描二维码。此时，可尝试使用系统自带二维码扫描器。</p>
+<p>若还是无法使用。或者，软件并非提供二维码，而是一串字符串，该怎样生成二维码，设置两步验证？</p>
+<p>其实，通用验证算法的格式是固定的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">otpauth://totp/username?secret=password&amp;issuer=appName</span><br></pre></td></tr></table></figure>
+
+<p>可以根据自己获得的字符串，生成相应的二维码</p>
+<h2 id="密码保护"><a href="#密码保护" class="headerlink" title="密码保护"></a>密码保护</h2><p>电影《我是谁：没有绝对安全的系统》中说：</p>
+<blockquote>
+<p>最大的安全漏洞并不是存在于什么程序或者服务器内，人类才是最大的安全漏洞</p>
+</blockquote>
+<p>不管算法生成的密码有多么安全，如果我们使用时不加注意，再复杂的密码也无法保证账户安全。</p>
+<p>不轻易透漏自己的密码，账户最好不要与他人公用，尽量使用两步验证，多注意类似的安全小细节，才能更好地保护自己的账户安全。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/教程/" rel="tag"># 教程</a>
+              <a href="/tags/工具/" rel="tag"># 工具</a>
+              <a href="/tags/安全/" rel="tag"># 安全</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/08/19/远离信息的洪流/" rel="prev" title="远离信息的洪流">
+      <i class="fa fa-chevron-left"></i> 远离信息的洪流
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/28/Favorite Movies 2018/" rel="next" title="Favorite Movies 2018">
+      Favorite Movies 2018 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码设置"><span class="nav-number">1.</span> <span class="nav-text">密码设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密码管理"><span class="nav-number">2.</span> <span class="nav-text">密码管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用软件"><span class="nav-number">2.1.</span> <span class="nav-text">通用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统自带"><span class="nav-number">2.2.</span> <span class="nav-text">系统自带</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器"><span class="nav-number">2.3.</span> <span class="nav-text">浏览器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两步验证"><span class="nav-number">3.</span> <span class="nav-text">两步验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例外情况"><span class="nav-number">3.1.</span> <span class="nav-text">例外情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密码保护"><span class="nav-number">4.</span> <span class="nav-text">密码保护</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Batran"
+      src="https://i.loli.net/2019/07/27/5d3c1b54caa3052566.png">
+  <p class="site-author-name" itemprop="name">Batran</p>
+  <div class="site-description" itemprop="description">Less is more than more</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Batran</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
